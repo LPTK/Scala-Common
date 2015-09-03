@@ -1,4 +1,4 @@
-package collutils
+package utils.collns
 
 class UnmodifiableView[A](coll: Seq[A]) extends collection.Seq[A]{
     def length = coll.length

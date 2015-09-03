@@ -12,9 +12,9 @@ case class Nat(value: Int) {
 }
 
 object Nat {
+  import scala.language.implicitConversions
   
-  implicit def toInt(n: Nat) = n.value
-  
+  implicit def toInt(n: Nat): Int = n.value
   
 }
 

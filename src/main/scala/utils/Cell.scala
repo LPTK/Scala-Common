@@ -1,5 +1,7 @@
 package utils
 
+import scala.language.implicitConversions
+
 //import scala.{ specialized => sp }
 import utils.{ DummyAnnot => sp }
 
@@ -64,7 +66,7 @@ object Cell {
     def copy = View(c.value)
   }
   
-  implicit def fromT[@sp T] (t: T) = Cell(t)
+  implicit def fromT[@sp T] (t: T): Cell[T] = Cell(t)
 //  implicit def toT[T] (c: Cell[T]) = !c
   
 //  implicit def numericCell[T: Numeric](c: Cell[T]): Numeric[Cell[T]] = new Numeric[Cell[T]] {
@@ -103,7 +105,7 @@ object Cell {
     
     def toDouble(t: C) = FP.toDouble(!t)
     def toFloat(t: C) = FP.toFloat(!t)
-    implicit def fromDouble(t: Double) = Cell(FP fromDouble t)
+    implicit def fromDouble(t: Double): Cell[T] = Cell(FP fromDouble t)
   }
   
 ////  implicit def viewableCell[T, C <: Cell[T]] = new Viewable[C, Cell[T]] {
